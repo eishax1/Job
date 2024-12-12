@@ -19,9 +19,11 @@ export const routes: Routes = [
         component: singleJobComponent
         },
     {path: 'login',
-        component:LoginComponent
+        component: LoginComponent
     },
     {path:'sign-up',
-        component:SignUpComponent
-    }
+        component: SignUpComponent
+    },
+
     ];
+

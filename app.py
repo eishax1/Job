@@ -6,6 +6,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from decorators.token_utils import create_token
 from decorators.admin_or_recruiter import admin_or_recruiter_required
+from flask_cors import CORS
 
 # Import custom decorators
 from decorators.admin_decorator import admin_required
@@ -13,6 +14,7 @@ from decorators.recruiter import recruiter_required
 
 # App Configuration
 app = Flask(__name__)
+CORS(app)
 app.config['SECRET_KEY'] = 'mysecret'
 
 # MongoDB Setup
@@ -25,7 +27,7 @@ blacklist = db.blacklist
 
 #-------------------------------------Authentication routes---------------------------------------------
 
-@app.route('/api/v1.0/login', methods=['GET']) 
+@app.route('/api/v1.0/login', methods=['POST']) 
 def login():
     if 'user_id' in session:
         return make_response(jsonify({'message': 'You are already logged in. Please log out before attempting to log in again.'}), 409)
