@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+
+<!-- Recruiter View Section -->
+<section class="container my-5">
+    <h2 class="text-center text-light mb-4">Your Listed Vacancies</h2>
+  
+    <!-- Display a message if no jobs are available -->
+    <div *ngIf="jobs.length === 0" class="alert alert-warning">No jobs found.</div>
+  
+    <!-- Display the list of jobs with editing and deleting options -->
+    <div *ngFor="let job of jobs">
+      <div *ngIf="editingJob?._id === job._id; else jobView">
+        <!-- Edit Form for a Job Listing -->
+        <form (ngSubmit)="updateJob()">
+          <div class="mb-3">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <input id="jobTitle" type="text" [(ngModel)]="editingJob.job_title" name="job_title" class="form-control" placeholder="Enter the job title" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="companyName" class="form-label">Company Name</label>
+            <input id="companyName" type="text" [(ngModel)]="editingJob.company_name" name="company_name" class="form-control" placeholder="Enter the company name" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="seniorityLevel" class="form-label">Seniority Level</label>
+            <input id="seniorityLevel" type="text" [(ngModel)]="editingJob.seniority_level" name="seniority_level" class="form-control" placeholder="e.g., Mid-Senior level" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="postedDate" class="form-label">Posted Date</label>
+            <input id="postedDate" type="date" [(ngModel)]="editingJob.posted_date" name="posted_date" class="form-control" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="applicants" class="form-label">Number of Applicants</label>
+            <input id="applicants" type="number" [(ngModel)]="editingJob.applicants" name="applicants" class="form-control" placeholder="Enter the number of applicants" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="employmentType" class="form-label">Employment Type</label>
+            <input id="employmentType" type="text" [(ngModel)]="editingJob.employment_type" name="employment_type" class="form-control" placeholder="e.g., Full-time, Part-time" required />
+          </div>
+
+          <div class="mb-3">
+            <label for="jobDescription" class="form-label">Job Description</label>
+            <textarea id="jobDescription" [(ngModel)]="editingJob.job_description" name="job_description" class="form-control" placeholder="Enter a brief description of the job" required></textarea>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" (click)="cancelEditing()">Cancel</button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Default view of the job listing -->
+      <ng-template #jobView>
+        <div class="card shadow-sm border-0 job-listing-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ job.job_title }} at {{ job.company_name }}</h5>
+            <p class="card-text"><strong>Company:</strong> {{ job.company_name }}</p>
+            <p class="card-text"><strong>Seniority Level:</strong> {{ job.seniority_level }}</p>
+            <p class="card-text"><strong>Posted Date:</strong> {{ job.posted_date | date }}</p>
+            <p class="card-text"><strong>Applicants:</strong> {{ job.applicants }}</p>
+            <p class="card-text"><strong>Employment Type:</strong> {{ job.employment_type }}</p>
+            <p class="card-text"><strong>Job Description:</strong> {{ job.job_description }}</p>
+            <button class="btn btn-outline-primary" (click)="startEditing(job)">Edit</button>
+            <button class="btn btn-outline-danger" (click)="deleteJob(job._id)">Delete</button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  
+    <!-- Success or Error messages -->
+    <div *ngIf="successMessage" class="alert alert-success mt-4">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-4">{{ errorMessage }}</div>
+</section>
