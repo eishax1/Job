@@ -1,0 +1,195 @@
+/* Hero Section Styling */
+.hero-section {
+    position: relative;
+    background-image: url('/board.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #ECF0F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-content h1 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  
+  .hero-content p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-content .search-bar input {
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    width: 60%;
+  }
+  
+  .hero-content .search-bar button {
+    padding: 15px 30px;
+    border-radius: 30px;
+    background-color: #1ABC9C;
+    border: none;
+    color: white;
+    font-weight: 500;
+  }
+  
+  /* Job Categories Section */
+  .job-category-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .job-category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+    transition: transform 0.3s ease;
+  }
+  
+  .job-category-card img:hover {
+    transform: scale(1.05);
+  }
+  
+  .job-category-card .card-body {
+    background-color: #34495e;
+    color: #ECF0F1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .job-category-card h5 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .job-category-card p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-top: 10px;
+    flex-grow: 1;
+  }
+  
+  /* Ensure the cards have equal height in a row */
+  .row.g-4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .col-md-4 {
+    flex: 1;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  
+  /* Featured Jobs Section */
+  .featured-job-card .card-body {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+    padding: 25px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .featured-job-card .card-body:hover {
+    transform: translateY(-5px); 
+  }
+  
+  .featured-job-card h5 {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  
+  .featured-job-card p {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  
+  .featured-job-card .btn-outline-light {
+    color: #ECF0F1;
+    border: 2px solid #ECF0F1;
+    transition: background-color 0.3s ease;
+  }
+  
+  .featured-job-card .btn-outline-light:hover {
+    background-color: #ECF0F1;
+    color: #34495e;
+  }
+  
+  /* Testimonials Section */
+  .testimonial {
+    background-color: #34495e;
+    padding: 20px;
+    border-radius: 10px;
+    color: #ECF0F1;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial p {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  
+  .testimonial .author {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #2C3E50;
+    color: #BDC3C7;
+    padding: 40px 0;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
+  .footer a {
+    color: #1ABC9C;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 10px;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  

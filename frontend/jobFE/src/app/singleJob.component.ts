@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, ActivatedRoute } from '@angular/router';
-import { DataService } from './data.service';
+
 import { WebService } from './services/web.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 
+/**
+ * @component singleJobComponent
+ * @description
+ * This component is responsible for displaying the details of a single job.
+ * It retrieves the job ID from the route parameters and fetches the job details 
+ * from the backend using the WebService.
+ *
+
+ */
 
 @Component({
 selector: 'singleJob',

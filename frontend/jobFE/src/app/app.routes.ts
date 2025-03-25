@@ -1,16 +1,18 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home.component';
 import { JobComponent } from './job.component';
 import { singleJobComponent } from './singleJob.component';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { RecruiterViewComponent } from './recruiter-view/recruiter-view.component';
-import { RoleGuard } from './guards/role.guard';
+
+import { TestJobPortalComponent } from './test-job-portal/test-job-portal.component';
+import { DefaultHomepageComponent } from './default-homepage/default-homepage.component';
+import { RecruiterAuthGuard } from './guards/role.guard';
+import { AddJobComponent } from './recruiter-view/add-job/add-job/add-job.component';
 
 export const routes: Routes = [
     {
     path: '',
-    component: HomeComponent
+    component: DefaultHomepageComponent
     },
     {
     path: 'job',
@@ -23,13 +25,21 @@ export const routes: Routes = [
     {path: 'login',
         component: LoginComponent
     },
-    {path:'sign-up',
-        component: SignUpComponent
-    },
+    
     {
         path: 'recruiter-view',
-        component:RecruiterViewComponent
-    }
+        component:RecruiterViewComponent,
+        canActivate: [RecruiterAuthGuard],
+    },
+    {
+        path: 'app-add-job',
+        component:AddJobComponent,
+        canActivate: [RecruiterAuthGuard],
+    },
+    {
+        path: 'test',
+        component: TestJobPortalComponent
+        }
 
     ];
 

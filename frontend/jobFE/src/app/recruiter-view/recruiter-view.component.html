@@ -2,7 +2,7 @@
 
 <!-- Recruiter View Section -->
 <section class="container my-5">
-    <h2 class="text-center text-light mb-4">Your Listed Vacancies</h2>
+    <h2 class="text-center mb-4">Your Listed Vacancies</h2>
   
     <!-- Display a message if no jobs are available -->
     <div *ngIf="jobs.length === 0" class="alert alert-warning">No jobs found.</div>
@@ -67,6 +67,9 @@
             <p class="card-text"><strong>Job Description:</strong> {{ job.job_description }}</p>
             <button class="btn btn-outline-primary" (click)="startEditing(job)">Edit</button>
             <button class="btn btn-outline-danger" (click)="deleteJob(job._id)">Delete</button>
+            <a class="nav-link" href="/app-add-job">Add Vacancy</a>
+
+
           </div>
         </div>
       </ng-template>

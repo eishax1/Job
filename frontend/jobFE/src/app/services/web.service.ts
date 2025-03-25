@@ -12,13 +12,23 @@ export class WebService {
   constructor(private http: HttpClient) {}
 
   // to get all the vacancies in the database
-  getJobs(page: number, limit: number = 10): Observable<any> {
-    const params = new HttpParams()
-      .set('pn', page.toString())
-      .set('limit', limit.toString());
+  getJobs(page: number, limit: number, employment_type: string, seniority_level: string): Observable<any> {
+    let params: any = {
+      pn: page.toString(),
+      limit: limit.toString(),
+    };
 
-    return this.http.get(this.apiUrl, { params });
+    if (employment_type) {
+      params.employment_type = employment_type;
+    }
+
+    if (seniority_level) {
+      params.seniority_level = seniority_level;
+    }
+
+    return this.http.get<any[]>(this.apiUrl, { params });
   }
+
  
   //to get specific vacancies depending on the jobID
   getJobById(id: any) {

@@ -1,5 +1,43 @@
-<!-- Navbar Section -->
 <app-navbar></app-navbar>
+
+<!-- Filter Section -->
+<section class="container my-5">
+  <h2 class="text-center">Filter Jobs</h2>
+  <div class="row justify-content-center">
+    <!-- Employment Type Filter -->
+    <div class="col-md-4">
+      <label for="employment_type" class="form-label">Employment Type</label>
+      <select
+        id="employment_type"
+        [(ngModel)]="employment_type"
+        (change)="applyFilters()"
+        class="form-select"
+      >
+        <option value="">All</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+        <option value="Contract">Contract</option>
+        <!-- Add more options as needed -->
+      </select>
+    </div>
+
+    <!-- Seniority Level Filter -->
+    <div class="col-md-4">
+      <label for="seniority_level" class="form-label">Seniority Level</label>
+      <select
+        id="seniority_level"
+        [(ngModel)]="seniority_level"
+        (change)="applyFilters()"
+        class="form-select"
+      >
+        <option value="">All</option>
+        <option *ngFor="let level of seniorityLevels" [value]="level">
+          {{ level }}
+        </option>
+      </select>
+    </div>
+  </div>
+</section>
 
 <!-- Jobs Section -->
 <section class="container my-5">
@@ -10,13 +48,14 @@
     <ng-container *ngFor="let job of job_list; trackBy: trackByJob">
       <div class="col-md-6">
         <div
-          class="card shadow-sm border-0 featured-job-card"
+          class="card shadow-sm border-0 job-card"
           style="cursor: pointer"
-          [routerLink] = "['/job', job._id]">
+          [routerLink]="['/job', job._id]"
+        >
           <!-- Card Header -->
-          <div class="card-header bg-primary text-white d-flex align-items-center">
-            <h5 class="mb-0 flex-grow-1">{{ job.job_title }}</h5>
-            <span class="badge bg-light text-primary">{{ job.employment_type }}</span>
+          <div class="job-header">
+            <h3>{{ job.job_title }}</h3>
+            <span class="job-type">{{ job.employment_type }}</span>
           </div>
 
           <!-- Card Body -->
@@ -55,11 +94,7 @@
 <section class="container my-5">
   <div class="row align-items-center">
     <div class="col-sm-4">
-      <button
-        class="btn w-100"
-        (click)="previousPage()"
-        [disabled]="page <= 1"
-      >
+      <button class="btn w-100" (click)="previousPage()" [disabled]="page <= 1">
         <i class="bi bi-arrow-left"></i> Previous
       </button>
     </div>

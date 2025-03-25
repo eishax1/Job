@@ -20,6 +20,15 @@ export class RecruiterViewComponent implements OnInit {
   errorMessage: string = '';
   page: number = 1;
   limit: number = 10;
+    // New job model for the "Add Job" form
+    newJob: any = {
+      job_title: '',
+      company_name: '',
+      seniority_level: '',
+      posted_date: '',
+      employment_type: '',
+      job_description: ''
+    };
 
   constructor(
     public jobService: JobService, 
@@ -46,6 +55,32 @@ export class RecruiterViewComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = error.error.message || 'Failed to fetch job listings.';
+      }
+    );
+  }
+  
+  addJob() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.errorMessage = 'Authentication token is missing!';
+      return;
+    }
+
+    this.jobService.addJob(this.newJob, token).subscribe(
+      (response) => {
+        this.successMessage = 'Job added successfully!';
+        this.newJob = {
+          job_title: '',
+          company_name: '',
+          seniority_level: '',
+          posted_date: '',
+          employment_type: '',
+          job_description: ''
+        }; // Reset the form
+        this.fetchJobs(); // Refresh job listings
+      },
+      (error) => {
+        this.errorMessage = error.error.message || 'Failed to add the job.';
       }
     );
   }

@@ -1,0 +1,25 @@
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #34495e; /* Matches navbar color */
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .job-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #ECF0F1; /* Light text for contrast */
+  }
+  
+  .job-type {
+    padding: 5px 10px;
+    background-color: #1ABC9C; /* Accent color for job type label */
+    color: #ECF0F1; /* Light text for contrast */
+    font-size: 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  

@@ -1,0 +1,466 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>job-fe documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">job-fe documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DefaultHomepageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/default-homepage/default-homepage.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-default-homepage</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterOutlet</code>
+                                <code><a href="../components/NavbarComponent.html" target="_self" >NavbarComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./default-homepage.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./default-homepage.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { RouterOutlet } from &#x27;@angular/router&#x27;;
+import { NavbarComponent } from &#x27;../navbar/navbar.component&#x27;;
+
+@Component({
+  selector: &#x27;app-default-homepage&#x27;,
+  standalone: true,
+  imports: [RouterOutlet, NavbarComponent],
+  templateUrl: &#x27;./default-homepage.component.html&#x27;,
+  styleUrl: &#x27;./default-homepage.component.css&#x27;
+})
+export class DefaultHomepageComponent {
+  
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Job Vacancy Portal&lt;/title&gt;
+    &lt;!-- Link to Bootstrap CSS --&gt;
+    &lt;link href&#x3D;&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css&quot; rel&#x3D;&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        body {
+            background-color: #bbcfe4; 
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;app-navbar&gt;&lt;/app-navbar&gt;
+    &lt;!-- Hero Section --&gt;
+    &lt;header class&#x3D;&quot;hero-section&quot;&gt;
+        &lt;div class&#x3D;&quot;hero-overlay&quot;&gt;&lt;/div&gt;
+        &lt;div class&#x3D;&quot;hero-content&quot;&gt;
+          &lt;h1&gt;Discover Your Perfect Job&lt;/h1&gt;
+          &lt;p&gt;Your dream job is just a click away. Explore thousands of opportunities today!&lt;/p&gt;
+          &lt;form class&#x3D;&quot;search-bar d-flex&quot;&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control me-2&quot; placeholder&#x3D;&quot;Search for jobs, companies, or locations&quot; /&gt;
+            &lt;button class&#x3D;&quot;btn btn-primary px-4&quot;&gt;Search&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    
+    &lt;!-- Job Categories Section --&gt;
+    &lt;section class&#x3D;&quot;container my-5&quot;&gt;
+        &lt;h2 class&#x3D;&quot;text-center mb-4&quot;&gt;Job Categories&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+            &lt;div class&#x3D;&quot;card job-category-card&quot;&gt;
+              &lt;img src&#x3D;&quot;IT.jpg&quot; alt&#x3D;&quot;IT &amp; Software&quot; /&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h5&gt;IT &amp; Software&lt;/h5&gt;
+                &lt;p&gt;Build your career in technology and software development.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+            &lt;div class&#x3D;&quot;card job-category-card&quot;&gt;
+              &lt;img src&#x3D;&quot;finance.jpeg&quot; alt&#x3D;&quot;Finance&quot; /&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h5&gt;Finance&lt;/h5&gt;
+                &lt;p&gt;Explore opportunities in accounting, investment, and more.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+            &lt;div class&#x3D;&quot;card job-category-card&quot;&gt;
+              &lt;img src&#x3D;&quot;retail.jpg&quot; alt&#x3D;&quot;Retail &amp; Sales&quot; /&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h5&gt;Retail &amp; Sales&lt;/h5&gt;
+                &lt;p&gt;Find your future in retail management and sales.&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    
+    &lt;!-- Featured Jobs Section --&gt;
+    &lt;section class&#x3D;&quot;container my-5&quot;&gt;
+        &lt;h2 class&#x3D;&quot;text-center  mb-4&quot;&gt;Featured Jobs&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+            &lt;div class&#x3D;&quot;card shadow-sm border-0 featured-job-card&quot;&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h5&gt;Software Engineer&lt;/h5&gt;
+                &lt;p&gt;Google · Mountain View, CA · Full-time&lt;/p&gt;
+                &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;btn btn-outline-primary&quot;&gt;View Details&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
+            &lt;div class&#x3D;&quot;card shadow-sm border-0 featured-job-card&quot;&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h5&gt;Marketing Specialist&lt;/h5&gt;
+                &lt;p&gt;Amazon · Seattle, WA · Full-time&lt;/p&gt;
+                &lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;btn btn-outline-primary&quot;&gt;View Details&lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    
+    &lt;!-- Testimonials Section --&gt;
+    &lt;section class&#x3D;&quot;container my-5&quot;&gt;
+        &lt;h2 class&#x3D;&quot;text-center  mb-4&quot;&gt;What Our Users Say&lt;/h2&gt;
+        &lt;div class&#x3D;&quot;row g-4&quot;&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+            &lt;div class&#x3D;&quot;testimonial&quot;&gt;
+              &lt;p&gt;&quot;This platform helped me land my dream job in record time. Highly recommend!&quot;&lt;/p&gt;
+              &lt;p class&#x3D;&quot;author&quot;&gt;- Sarah M.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+            &lt;div class&#x3D;&quot;testimonial&quot;&gt;
+              &lt;p&gt;&quot;A seamless experience with a variety of job options. Love it!&quot;&lt;/p&gt;
+              &lt;p class&#x3D;&quot;author&quot;&gt;- John D.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+            &lt;div class&#x3D;&quot;testimonial&quot;&gt;
+              &lt;p&gt;&quot;An excellent platform to find jobs quickly and efficiently.&quot;&lt;/p&gt;
+              &lt;p class&#x3D;&quot;author&quot;&gt;- Lisa K.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    
+    &lt;!-- Footer --&gt;
+    &lt;footer class&#x3D;&quot;footer text-center&quot;&gt;
+        &lt;div class&#x3D;&quot;container&quot;&gt;
+          &lt;p&gt;&amp;copy; 2024 Job Vacancy Portal. All Rights Reserved.&lt;/p&gt;
+          &lt;p&gt;
+            &lt;a href&#x3D;&quot;#&quot;&gt;Privacy Policy&lt;/a&gt; | &lt;a href&#x3D;&quot;#&quot;&gt;Terms of Service&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+
+   
+    &lt;script src&#x3D;&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Job Vacancy Portal</title>    <!-- Link to Bootstrap CSS -->    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">    <style>        body {            background-color: #bbcfe4;         }    </style></head><body>    <app-navbar></app-navbar>    <!-- Hero Section -->    <header class="hero-section">        <div class="hero-overlay"></div>        <div class="hero-content">          <h1>Discover Your Perfect Job</h1>          <p>Your dream job is just a click away. Explore thousands of opportunities today!</p>          <form class="search-bar d-flex">            <input type="text" class="form-control me-2" placeholder="Search for jobs, companies, or locations" />            <button class="btn btn-primary px-4">Search</button>          </form>        </div>    </header>        <!-- Job Categories Section -->    <section class="container my-5">        <h2 class="text-center mb-4">Job Categories</h2>        <div class="row g-4">          <div class="col-md-4">            <div class="card job-category-card">              <img src="IT.jpg" alt="IT & Software" />              <div class="card-body">                <h5>IT & Software</h5>                <p>Build your career in technology and software development.</p>              </div>            </div>          </div>          <div class="col-md-4">            <div class="card job-category-card">              <img src="finance.jpeg" alt="Finance" />              <div class="card-body">                <h5>Finance</h5>                <p>Explore opportunities in accounting, investment, and more.</p>              </div>            </div>          </div>          <div class="col-md-4">            <div class="card job-category-card">              <img src="retail.jpg" alt="Retail & Sales" />              <div class="card-body">                <h5>Retail & Sales</h5>                <p>Find your future in retail management and sales.</p>              </div>            </div>          </div>        </div>    </section>        <!-- Featured Jobs Section -->    <section class="container my-5">        <h2 class="text-center  mb-4">Featured Jobs</h2>        <div class="row g-4">          <div class="col-md-6">            <div class="card shadow-sm border-0 featured-job-card">              <div class="card-body">                <h5>Software Engineer</h5>                <p>Google · Mountain View, CA · Full-time</p>                <a href="#" class="btn btn-outline-primary">View Details</a>              </div>            </div>          </div>          <div class="col-md-6">            <div class="card shadow-sm border-0 featured-job-card">              <div class="card-body">                <h5>Marketing Specialist</h5>                <p>Amazon · Seattle, WA · Full-time</p>                <a href="#" class="btn btn-outline-primary">View Details</a>              </div>            </div>          </div>        </div>    </section>        <!-- Testimonials Section -->    <section class="container my-5">        <h2 class="text-center  mb-4">What Our Users Say</h2>        <div class="row g-4">          <div class="col-md-4">            <div class="testimonial">              <p>"This platform helped me land my dream job in record time. Highly recommend!"</p>              <p class="author">- Sarah M.</p>            </div>          </div>          <div class="col-md-4">            <div class="testimonial">              <p>"A seamless experience with a variety of job options. Love it!"</p>              <p class="author">- John D.</p>            </div>          </div>          <div class="col-md-4">            <div class="testimonial">              <p>"An excellent platform to find jobs quickly and efficiently."</p>              <p class="author">- Lisa K.</p>            </div>          </div>        </div>    </section>        <!-- Footer -->    <footer class="footer text-center">        <div class="container">          <p>&copy; 2024 Job Vacancy Portal. All Rights Reserved.</p>          <p>            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>          </p>        </div>    </footer>       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script></body></html></div>'
+    var COMPONENTS = [{'name': 'AddJobComponent', 'selector': 'app-add-job'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthButtonComponent', 'selector': 'auth-button'},{'name': 'DefaultHomepageComponent', 'selector': 'app-default-homepage'},{'name': 'HomeComponent', 'selector': 'home'},{'name': 'JobComponent', 'selector': 'job'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RecruiterViewComponent', 'selector': 'app-recruiter-view'},{'name': 'SignUpComponent', 'selector': 'app-sign-up'},{'name': 'singleJobComponent', 'selector': 'singleJob'},{'name': 'TestJobPortalComponent', 'selector': 'app-test-job-portal'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DefaultHomepageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DefaultHomepageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

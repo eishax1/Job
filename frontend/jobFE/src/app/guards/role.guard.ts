@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
-import { Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/authservice';
+
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class RoleGuard implements CanActivate {
-  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
+export class RecruiterAuthGuard implements CanActivate {
 
-  canActivate(): boolean {
-    // Check if the code is running in the browser
-    if (isPlatformBrowser(this.platformId)) {
-      const role = localStorage.getItem('role');
+  constructor(private authService: AuthService, private router: Router) {}
 
-      if (role === 'recruiter') {
-        return true; // Allow access to the route
-      } else {
-        // Redirect to the user dashboard if the role isn't 'recruiter'
-        this.router.navigate(['/job']);
-        return false;
-      }
-    } else {
-      // SSR environment: prevent access or take necessary action
-      // You can choose to handle SSR case differently, for now we just return false.
-      return false;
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+
+    // Check if the user is logged in and has the 'recruiter' role
+    if (this.authService.getUserRole() === 'Recruiter') {
+      return true;  // Access allowed
     }
+
+    // Redirect the user to login page if they are not logged in or not a recruiter
+    this.router.navigate(['/job']);
+    return false;  // Access denied
   }
 }

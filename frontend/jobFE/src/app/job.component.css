@@ -1,92 +1,40 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-}
-
-.job-card {
-  width: 300px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.job-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 .job-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  background-color: #34495e; /* Matches navbar color */
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
 }
 
 .job-header h3 {
   font-size: 18px;
   font-weight: bold;
   margin: 0;
-  color: #333;
+  color: #ECF0F1; /* Light text for contrast */
 }
 
 .job-type {
   padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #1ABC9C; /* Accent color for job type label */
+  color: #ECF0F1; /* Light text for contrast */
   font-size: 12px;
   border-radius: 4px;
   text-transform: uppercase;
 }
-
-.job-details p {
-  font-size: 14px;
-  margin: 5px 0;
-  color: #555;
+.pagination-btn {
+  background-color: #34495e;
+  border-color: #34495e;
+  color: #ffffff;
 }
 
-.job-description h4 {
-  margin-top: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #444;
+.pagination-btn:hover {
+  background-color: #2c3e50; /* Darker shade for hover */
+  border-color: #2c3e50;
 }
 
-.job-description p {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #666;
-}
-
-.apply-button {
-  display: block;
-  width: 100%;
-  padding: 10px 0;
-  margin-top: 20px;
-  background-color: #007bff;
-  color: #201f4a;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.apply-button:hover {
-  background-color: #0056b3;
-}
-
-.btn-outline-light {
-  color: #000; /* Ensure the text is dark enough to be visible */
-  border-color: #000; /* Ensure the border is visible */
-}
-
-.btn-outline-light:hover {
-  background-color: #000; /* Add contrast on hover */
-  color: #fff;
+.pagination-btn:disabled {
+  background-color: #95a5a6;
+  border-color: #95a5a6;
+  color: #7f8c8d;
 }

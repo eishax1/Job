@@ -1,10 +1,12 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object,
+  private router:Router ) {}
 
   login(username: string, password: string) {
     const authHeader = 'Basic ' + btoa(username + ':' + password);
@@ -13,7 +15,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    // Check if the platform is a browser
+    // Ensure we're running in the browser before accessing localStorage
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
       return !!token;  // Returns true if token exists, otherwise false
@@ -23,15 +25,19 @@ export class AuthService {
   }
 
   getUserRole(): string {
-    // Retrieve the role of the logged-in user (this could come from a JWT or API call)
-    return localStorage.getItem('role') || 'user';
+    // Ensure we're running in the browser before accessing localStorage
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('role') || 'user';
+    }
+    return 'user';  // Default role if SSR or platform is not browser
   }
 
   logout(): void {
-    // Clear session data and log out
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    // You can also navigate the user to the login page after logout
+    // Ensure we're running in the browser before accessing localStorage
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+    }
+    this.router.navigate(['/login']);
   }
 }
-
