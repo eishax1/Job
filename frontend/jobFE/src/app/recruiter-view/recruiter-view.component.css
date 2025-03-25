@@ -1,0 +1,72 @@
+/* Recruiter View Section */
+.job-listing-card {
+    background-color: #34495e;
+    color: #ECF0F1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .job-listing-card .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .job-listing-card h5 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .job-listing-card .card-text {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-top: 10px;
+  }
+  
+  .job-listing-card .btn {
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  
+  .job-listing-card .btn-outline-primary {
+    color: #3498db;
+    border-color: #3498db;
+  }
+  
+  .job-listing-card .btn-outline-primary:hover {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .job-listing-card .btn-outline-danger {
+    color: #e74c3c;
+    border-color: #e74c3c;
+  }
+  
+  .job-listing-card .btn-outline-danger:hover {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  form .mb-3 input,
+  form .mb-3 textarea {
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  form button {
+    margin-right: 10px;
+  }
+  
+  .alert {
+    font-weight: 500;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  

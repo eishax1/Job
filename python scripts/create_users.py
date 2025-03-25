@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import bcrypt #for password hashing 
 
 client = MongoClient("mongodb://127.0.0.1:27017")
-db = client.cloud      
+db = client.Backend      
 users = db.users         
 
 user_list = [
@@ -20,7 +20,7 @@ user_list = [
             "password" : b"marge_s",
             "email" : "marge@springfield.net",
             "admin" : False,
-            "role" : "user"
+            "role" : "admin"
           },
           { 
             "name" : "Bart Simpson",

@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+
+<!-- Recruiter View Section -->
+<section class="container my-5">
+  <h2 class="text-center mb-4">Manage Vacancies</h2>
+   <!-- Success Message -->
+   <div *ngIf="successMessage" class="alert alert-success text-center" role="alert">
+    {{ successMessage }}
+  </div>
+
+  <!-- Add Job Form -->
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <h4 class="card-title text-center">Add New Job</h4>
+      <form (ngSubmit)="addJob()">
+        <div class="mb-3">
+          <label for="jobTitle" class="form-label">Job Title</label>
+          <input
+            id="jobTitle"
+            type="text"
+            [(ngModel)]="newJob.job_title"
+            name="job_title"
+            class="form-control"
+            placeholder="Enter the job title"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="companyName" class="form-label">Company Name</label>
+          <input
+            id="companyName"
+            type="text"
+            [(ngModel)]="newJob.company_name"
+            name="company_name"
+            class="form-control"
+            placeholder="Enter the company name"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="seniorityLevel" class="form-label">Seniority Level</label>
+          <input
+            id="seniorityLevel"
+            type="text"
+            [(ngModel)]="newJob.seniority_level"
+            name="seniority_level"
+            class="form-control"
+            placeholder="e.g., Mid-Senior level"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="postedDate" class="form-label">Posted Date</label>
+          <input
+            id="postedDate"
+            type="date"
+            [(ngModel)]="newJob.posted_date"
+            name="posted_date"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="employmentType" class="form-label">Employment Type</label>
+          <input
+            id="employmentType"
+            type="text"
+            [(ngModel)]="newJob.employment_type"
+            name="employment_type"
+            class="form-control"
+            placeholder="e.g., Full-time, Part-time"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="jobDescription" class="form-label">Job Description</label>
+          <textarea
+            id="jobDescription"
+            [(ngModel)]="newJob.job_description"
+            name="job_description"
+            class="form-control"
+            placeholder="Enter a brief description of the job"
+            required
+          ></textarea>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Add Job</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Existing Job Listings -->
+  <h2 class="text-center text-light mb-4">Your Listed Vacancies</h2>
+  
+  <!-- Existing Job Listing Cards -->
+  <div *ngFor="let job of jobs">
+    <!-- (Rest of your existing job listing code remains unchanged) -->
+  </div>
+</section>

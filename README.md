@@ -25,4 +25,4 @@ Ensure the following tools are installed on your machine:
 To run the application in development mode with live reloading:
 
    ```bash
-   npm install
+   ng serve

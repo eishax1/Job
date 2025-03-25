@@ -6,6 +6,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from decorators.token_utils import create_token
 from decorators.admin_or_recruiter import admin_or_recruiter_required
+from flask_cors import CORS
 
 # Import custom decorators
 from decorators.admin_decorator import admin_required
@@ -13,6 +14,7 @@ from decorators.recruiter import recruiter_required
 
 # App Configuration
 app = Flask(__name__)
+CORS(app)
 app.config['SECRET_KEY'] = 'mysecret'
 
 # MongoDB Setup
@@ -25,7 +27,7 @@ blacklist = db.blacklist
 
 #-------------------------------------Authentication routes---------------------------------------------
 
-@app.route('/api/v1.0/login', methods=['GET']) 
+@app.route('/api/v1.0/login', methods=['POST']) 
 def login():
     if 'user_id' in session:
         return make_response(jsonify({'message': 'You are already logged in. Please log out before attempting to log in again.'}), 409)
@@ -48,7 +50,7 @@ def login():
     
     return make_response(jsonify({'message': 'Authentication is required to access this resource.'}), 401)
 
-@app.route('/logout', methods=["GET"])
+@app.route('/api/v1.0/logout', methods=["GET"])
 def logout():
     token = request.headers.get('x-access-token')
     if token:
@@ -96,6 +98,34 @@ def show_all_vacancies():
         data_to_return.append(job)
     
     return make_response(jsonify(data_to_return), 200)
+
+@app.route('/api/v1.0/recruiter/jobs', methods=["GET"])
+@recruiter_required
+def get_jobs_by_recruiter():
+    # Retrieve the token from headers and decode it
+    token = request.headers.get('x-access-token')
+    if not token:
+        return make_response(jsonify({"error": "Token is missing from the request headers."}), 401)
+
+    try:
+        decoded_token = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+        recruiter_id = decoded_token['user_id']  # Extract recruiter ID from the token
+
+        # Retrieve jobs posted by the recruiter
+        recruiter_jobs = []
+        for job in job_collection.find({"recruiterId": recruiter_id}):
+            job['_id'] = str(job['_id'])
+            recruiter_jobs.append(job)
+
+        if not recruiter_jobs:
+            return make_response(jsonify({"message": "No jobs found for the logged-in recruiter."}), 404)
+
+        return make_response(jsonify(recruiter_jobs), 200)
+
+    except jwt.ExpiredSignatureError:
+        return make_response(jsonify({"error": "The token has expired. Please log in again."}), 401)
+    except jwt.InvalidTokenError:
+        return make_response(jsonify({"error": "Invalid token. Please log in again."}), 401)
 
 @app.route("/api/v1.0/jobs/<string:job_id>", methods=["GET"])
 def show_one_vacancy(job_id):
